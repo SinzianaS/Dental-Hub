@@ -5,7 +5,9 @@ import java.util.Date;
 public class Expense {
 
     private Long expenseId;
-    private int categoryId;
+    private Category category;
+
+    private User user;
     private double amount;
     private Date expenseDate;
     private String description;
@@ -15,13 +17,14 @@ public class Expense {
     }
 
     public Expense(Long expenseId,
-                   int categoryId,
+                   Category category,
+                   User user,
                    double amount,
                    Date expenseDate,
-                   String description,
-                   String location) {
+                   String description) {
         this.expenseId = expenseId;
-        this.categoryId = categoryId;
+        this.category = category;
+        this.user = user;
         this.amount = amount;
         this.expenseDate = expenseDate;
         this.description = description;
@@ -35,12 +38,20 @@ public class Expense {
         this.expenseId = expenseId;
     }
 
-    public int getCategoryId() {
-        return categoryId;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public double getAmount() {
@@ -71,7 +82,8 @@ public class Expense {
     public String toString() {
         return "Expense{" +
                 "expenseId=" + expenseId +
-                ", categoryId=" + categoryId +
+                ", category=" + category +
+                ", user=" + user +
                 ", amount=" + amount +
                 ", expenseDate=" + expenseDate +
                 ", description='" + description + '\'' +
