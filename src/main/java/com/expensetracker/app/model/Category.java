@@ -1,18 +1,22 @@
 package com.expensetracker.app.model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="category")
 public class Category {
-
+    @Id
     private int categoryId;
-    private String categoryName;
-
-    private User user;
+    private String name;
+    @ManyToOne(cascade=CascadeType.PERSIST)         //many categories can be connected to one user
+    private User user;                              //when we save the user, the category gets saved also
 
     public Category() {
     }
 
-    public Category(int categoryId, String categoryName) {
+    public Category(int categoryId, String name) {
         this.categoryId = categoryId;
-        this.categoryName = categoryName;
+        this.name = name;
         this.user = user;
     }
 
@@ -24,12 +28,12 @@ public class Category {
         this.categoryId = categoryId;
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public String getName() {
+        return name;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public User getUser() {

@@ -1,15 +1,22 @@
 package com.expensetracker.app.model;
 
-import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import java.time.LocalDate;
 
+@Entity
+@Table(name="expense")
 public class Expense {
-
+    @Id
     private Long expenseId;
+    @ManyToOne                  //many of the expenses can go under one category
     private Category category;
-
+    @ManyToOne                  //many expenses can be made by one user
     private User user;
     private double amount;
-    private Date expenseDate;
+    private LocalDate expenseDate;
     private String description;
 
     public Expense() {
@@ -20,7 +27,7 @@ public class Expense {
                    Category category,
                    User user,
                    double amount,
-                   Date expenseDate,
+                   LocalDate expenseDate,
                    String description) {
         this.expenseId = expenseId;
         this.category = category;
@@ -62,11 +69,11 @@ public class Expense {
         this.amount = amount;
     }
 
-    public Date getExpenseDate() {
+    public LocalDate getExpenseDate() {
         return expenseDate;
     }
 
-    public void setExpenseDate(Date expenseDate) {
+    public void setExpenseDate(LocalDate expenseDate) {
         this.expenseDate = expenseDate;
     }
 

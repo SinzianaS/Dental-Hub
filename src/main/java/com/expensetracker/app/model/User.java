@@ -1,14 +1,16 @@
 package com.expensetracker.app.model;
 
+import javax.persistence.*;
 import java.util.Set;
-
+@Entity
+@Table(name="users")
 public class User {
-
+    @Id
+    @GeneratedValue
     private long userId;
     private String username;
     private String email;
 
-    private Set<Category> category;
 
     public User() {
     }
@@ -17,7 +19,6 @@ public class User {
         this.userId = userId;
         this.username = username;
         this.email = email;
-        this.category = category;
     }
 
     public long getUserId() {
@@ -44,19 +45,12 @@ public class User {
         this.email = email;
     }
 
-    public Set<Category> getCategory() {
-        return category;
-    }
-
-    public void setCategory(Set<Category> category) {
-        this.category = category;
-    }
-
     @Override
     public String toString() {
         return "User{" +
                 "userId=" + userId +
-                ", username='" + username + '\'' +
+                ", username=" + username +
+                ", email=" + email+'\'' +
                 '}';
     }
 }
