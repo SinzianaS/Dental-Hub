@@ -1,0 +1,20 @@
+insert into users values (1, 'anai', 'anai@mail.com')
+insert into users values(2,'mariap', 'mariap@mail.com')
+insert into users values(3,'raduf', 'raduf@mail.com')
+insert into users values(4, 'serbanr', 'serbanr@mail.com')
+insert into users values(5, 'cristinag', 'cristinag@mail.com')
+
+insert into category values(1, 'Food', 1)
+insert into category values(2, 'Travel', 2)
+insert into category values(3, 'Restaurant', 3)
+insert into category values(4, 'Uber', 4)
+insert into category values(5, 'Hobbies', 5)
+insert into category values(6, 'Clothes', 1)
+
+insert into expense values(100,  100.00,  'fruit','2022-03-04',1, 1,)
+insert into expense values(101,  50.00, 'train tickets','2022-04-04', 2, 2,)
+insert into expense values(102,  250.00, 'dei Frati','2022-11-10', 3, 3,)
+insert into expense values(103,   45.00,  'Uber to town','2022-09-13',4, 4,)
+insert into expense values(104,  160.00, 'running gear','2022-10-01',5, 5,)
+insert into expense values(105,   200.00,'jeans', '2022-11-02',6, 1,)
+

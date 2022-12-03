@@ -1,5 +1,7 @@
 package com.expensetracker.app.model;
 
+import lombok.NonNull;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,6 +9,7 @@ import javax.persistence.*;
 public class Category {
     @Id
     private int categoryId;
+    @NonNull
     private String name;
     @ManyToOne(cascade=CascadeType.PERSIST)         //many categories can be connected to one user
     private User user;                              //when we save the user, the category gets saved also
