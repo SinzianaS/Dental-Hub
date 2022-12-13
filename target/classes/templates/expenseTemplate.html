@@ -3,8 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>expense template</title>
+    <link rel="stylesheet"
+    	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 <body>
-
+<div>
+    <h2>Expense List</h2>
+    <table>
+        <thead>
+        <th>Id</th>
+        <th>Category</th>
+        <th>User</th>
+        <th>Amount</th>
+        <th>Expense Date</th>
+        <th>Description</th>
+        </thead>
+        <tbody>
+        <tr th:each="expense : ${expenses}">
+            <td th:text="${expense.id}"></td>
+            <td th:text="${expense.category}"></td>
+            <td th:text="${expense.user}"></td>
+            <td th:text="${expense.amount}"></td>
+            <td th:text="${expense.expenseDate}"></td>
+            <td th:text="${expense.description}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

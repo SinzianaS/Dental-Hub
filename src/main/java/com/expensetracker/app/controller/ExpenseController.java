@@ -18,10 +18,18 @@ import java.util.List;
 public class ExpenseController {
     @Autowired
     private ExpenseRepository expenseRepository;
+    @Autowired
+    private ExpenseService expenseService;
 
     @GetMapping("/expenses")         //get all expenses
     List<Expense> getExpenses() {
-        return expenseRepository.findAll();
+        //return expenseRepository.findAll();
+        return expenseService.getAllExpenses();
+    }
+
+    @RequestMapping("/expenses/{id}")
+    public Expense getExpenseById(@PathVariable Long id){
+        return expenseService.getExpense(id);
     }
 
     @PostMapping("/expenses")    //create new expense
@@ -34,4 +42,5 @@ public class ExpenseController {
         expenseRepository.deleteById(id);
         return ResponseEntity.ok().build();
     }
+
 }

@@ -1,15 +1,13 @@
 package com.expensetracker.app.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 @Table(name="expense")
 public class Expense {
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long expenseId;
     @ManyToOne                  //many of the expenses can go under one category
     private Category category;
