@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 //mapping category bean to database table
 public interface CategoryRepository extends JpaRepository<Category, Integer> {
-    Category findByName(String name);                //search the table
+    //Category findByName(String name);                //search the table
 }

@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table(name="category")
 public class Category {
     @Id
-    private int categoryId;
+    private int id;
     @NonNull
     private String name;
     @ManyToOne(cascade=CascadeType.PERSIST)         //many categories can be connected to one user
@@ -17,18 +17,18 @@ public class Category {
     public Category() {
     }
 
-    public Category(int categoryId, String name) {
-        this.categoryId = categoryId;
+    public Category(int id, String name) {
+        this.id = id;
         this.name = name;
         this.user = user;
     }
 
-    public int getCategoryId() {
-        return categoryId;
+    public int getId() {
+        return id;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

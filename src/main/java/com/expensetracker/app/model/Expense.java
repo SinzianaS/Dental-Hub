@@ -1,19 +1,21 @@
 package com.expensetracker.app.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 @Table(name="expense")
 public class Expense {
     @Id
-    private Long expenseId;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Long id;
+    @JsonIgnore
     @ManyToOne                  //many of the expenses can go under one category
     private Category category;
-    @ManyToOne                  //many expenses can be made by one user
+    @ManyToOne
+    //many expenses can be made by one user
     private User user;
     private double amount;
     private LocalDate expenseDate;
@@ -23,13 +25,13 @@ public class Expense {
 
     }
 
-    public Expense(Long expenseId,
+    public Expense(Long id,
                    Category category,
                    User user,
                    double amount,
                    LocalDate expenseDate,
                    String description) {
-        this.expenseId = expenseId;
+        this.id = id;
         this.category = category;
         this.user = user;
         this.amount = amount;
@@ -37,12 +39,12 @@ public class Expense {
         this.description = description;
     }
 
-    public Long getExpenseId() {
-        return expenseId;
+    public Long getId() {
+        return id;
     }
 
-    public void setExpenseId(Long expenseId) {
-        this.expenseId = expenseId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Category getCategory() {
@@ -88,7 +90,7 @@ public class Expense {
     @Override
     public String toString() {
         return "Expense{" +
-                "expenseId=" + expenseId +
+                "expenseId=" + id +
                 ", category=" + category +
                 ", user=" + user +
                 ", amount=" + amount +
