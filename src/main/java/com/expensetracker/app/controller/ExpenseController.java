@@ -37,7 +37,7 @@ public class ExpenseController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value="/expenses/{id}")
-    public void deleteTopic(@PathVariable Long id){
+    public void deleteExpense(@PathVariable Long id){
         expenseService.deleteExpense(id);
     }
 }

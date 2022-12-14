@@ -18,7 +18,7 @@ public class ExpenseWebController {
 	@GetMapping("/template1")
 	public String getAllExpenses(Model model) {
 		List<Expense> expenses = expenseService.getAllExpenses();
-		model.addAttribute("expense", expenses);
+		model.addAttribute("expenses", expenses);
 		return "expenseTemplate";
 	}
 

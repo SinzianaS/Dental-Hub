@@ -8,7 +8,7 @@ import java.time.LocalDate;
 public class Expense {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long expenseId;
+    private Long id;
     @ManyToOne                  //many of the expenses can go under one category
     private Category category;
     @ManyToOne                  //many expenses can be made by one user
@@ -21,13 +21,13 @@ public class Expense {
 
     }
 
-    public Expense(Long expenseId,
+    public Expense(Long id,
                    Category category,
                    User user,
                    double amount,
                    LocalDate expenseDate,
                    String description) {
-        this.expenseId = expenseId;
+        this.id = id;
         this.category = category;
         this.user = user;
         this.amount = amount;
@@ -35,12 +35,12 @@ public class Expense {
         this.description = description;
     }
 
-    public Long getExpenseId() {
-        return expenseId;
+    public Long getId() {
+        return id;
     }
 
-    public void setExpenseId(Long expenseId) {
-        this.expenseId = expenseId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Category getCategory() {
@@ -86,7 +86,7 @@ public class Expense {
     @Override
     public String toString() {
         return "Expense{" +
-                "expenseId=" + expenseId +
+                "expenseId=" + id +
                 ", category=" + category +
                 ", user=" + user +
                 ", amount=" + amount +

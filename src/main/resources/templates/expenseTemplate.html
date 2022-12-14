@@ -20,7 +20,7 @@
         </thead>
         <tbody>
             <tr th:each="expense : ${expenses}">
-                <td th:text="${expense.id}"></td>
+                <td th:text="${expense.expenseId}"></td>
                 <td th:text="${expense.category}"></td>
                 <td th:text="${expense.user}"></td>
                 <td th:text="${expense.amount}"></td>

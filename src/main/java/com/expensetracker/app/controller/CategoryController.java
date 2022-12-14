@@ -1,7 +1,10 @@
 package com.expensetracker.app.controller;
 
 import com.expensetracker.app.model.Category;
+import com.expensetracker.app.model.Expense;
 import com.expensetracker.app.repository.CategoryRepository;
+import com.expensetracker.app.service.CategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,41 +18,34 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api")
 public class CategoryController {
+    @Autowired
     private CategoryRepository categoryRepository;
+    @Autowired
+    private CategoryService categoryService;
 
-    public CategoryController(CategoryRepository categoryRepository) {
-        super();
-        this.categoryRepository = categoryRepository;
-    }
-
-    @GetMapping("/categories")
+    @RequestMapping("/categories")
     Collection<Category> categories(){
-        return categoryRepository.findAll();        //select all from category table
+        //return categoryRepository.findAll();        //select all from category table
+        return categoryService.getAllCategories();
     }
 
-    @GetMapping("category/{id}")
-    ResponseEntity<?> getCategory(@PathVariable int id){
-        //Category category =  categoryRepository.findById(id);
-        Optional<Category> category =categoryRepository.findById(id);  //Optional because the category might not exist
-        return category.map(response -> ResponseEntity.ok().body(response))
-                                        .orElse((new ResponseEntity<>(HttpStatus.NOT_FOUND)));
+    @RequestMapping("categories/{id}")
+    public Category getCategoryById(@PathVariable Integer id){
+        return categoryService.getCategory(id);
     }
 
-    @PostMapping("/category")
-    ResponseEntity<Category> createCategory(@Valid @RequestBody Category category) throws URISyntaxException {
-        Category result = categoryRepository.save(category);             //insert into table
-        return ResponseEntity.created(new URI("/api/category" + result.getCategoryId())).body(result);
+    @RequestMapping(method = RequestMethod.POST, value = "/categories")
+        public void addCategory(@RequestBody Category category){
+        categoryService.addCategory(category);
     }
 
-    @PutMapping("/category")                       //override/modify a category
-    ResponseEntity<Category> updateCategory(@RequestBody @Valid Category category) {
-        Category result= categoryRepository.save(category);
-        return ResponseEntity.ok().body(result);
+    @RequestMapping(method = RequestMethod.PUT, value = "/categories/{id}")
+        public void updateCategory(@RequestBody Category category, @PathVariable Integer id) {
+        categoryService.updateCategory(id, category);
     }
 
-    @DeleteMapping("/category/{id}")                 //delete a category by id
-    ResponseEntity<?> deleteCategory(@PathVariable int id) {
-        categoryRepository.deleteById(id);
-        return ResponseEntity.ok().build();
+    @RequestMapping(method = RequestMethod.DELETE, value="/categories/{id}")
+        public void deleteTopic(@PathVariable Long id){
+        categoryService.deleteCategory(id);
     }
 }
