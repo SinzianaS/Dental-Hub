@@ -7,7 +7,7 @@ import java.time.LocalDate;
 @Table(name="expense")
 public class Expense {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long expenseId;
     @ManyToOne                  //many of the expenses can go under one category
     private Category category;

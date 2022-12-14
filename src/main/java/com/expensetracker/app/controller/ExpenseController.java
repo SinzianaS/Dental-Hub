@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -21,7 +22,7 @@ public class ExpenseController {
     @Autowired
     private ExpenseService expenseService;
 
-    @GetMapping("/expenses")         //get all expenses
+    @RequestMapping("/expenses")         //get all expenses
     List<Expense> getExpenses() {
         //return expenseRepository.findAll();
         return expenseService.getAllExpenses();
@@ -32,15 +33,18 @@ public class ExpenseController {
         return expenseService.getExpense(id);
     }
 
-    @PostMapping("/expenses")    //create new expense
-    ResponseEntity<Expense> createExpense(@Valid @RequestBody Expense expense) throws URISyntaxException {
-        Expense result= expenseRepository.save(expense);
-        return ResponseEntity.created(new URI("/api/expenses" + result.getExpenseId())).body(result);
-    }
-    @DeleteMapping("/expenses/{id}")
-    ResponseEntity<?> deleteExpense(@PathVariable Long id) {
-        expenseRepository.deleteById(id);
-        return ResponseEntity.ok().build();
+    @RequestMapping(method = RequestMethod.POST, value = "/expenses")
+        public void addExpense(@RequestBody Expense expense){
+        expenseService.addExpense(expense);
     }
 
+    @RequestMapping(method = RequestMethod.PUT, value = "/expenses/{id}")
+    public void updateExpense(@RequestBody Expense expense, @PathVariable Long id) {
+        expenseService.updateExpense(id, expense);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value="/expenses/{id}")
+    public void deleteTopic(@PathVariable Long id){
+        expenseService.deleteExpense(id);
+    }
 }
