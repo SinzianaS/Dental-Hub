@@ -45,7 +45,7 @@ public class CategoryController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value="/categories/{id}")
-        public void deleteTopic(@PathVariable Long id){
+        public void deleteCategory(@PathVariable Long id){
         categoryService.deleteCategory(id);
     }
 }
