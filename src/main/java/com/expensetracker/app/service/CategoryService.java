@@ -1,14 +1,13 @@
 package com.expensetracker.app.service;
 
 import com.expensetracker.app.model.Category;
-import com.expensetracker.app.model.Expense;
 import com.expensetracker.app.repository.CategoryRepository;
-import com.expensetracker.app.repository.ExpenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Service
 public class CategoryService {
 @Autowired
     private CategoryRepository categoryRepository;
