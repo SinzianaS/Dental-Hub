@@ -17,29 +17,19 @@ public class ExpenseWebController {
 
 	@GetMapping("/template1")
 	public String getAllExpenses(Model model) {
-		List<Expense> expenses = expenseService.getAllExpenses();
-		model.addAttribute("expenses", expenses);
+		model.addAttribute("expenses", expenseService.getAllExpenses());
 		return "expenseTemplate";
 	}
 
-	@RequestMapping("/expense/{id}")
-	public Expense getExpense(@PathVariable Long id) {
-		return expenseService.getExpense(id);
+	@RequestMapping("/createExpense")
+	public String createExpense(Model model){
+		model.addAttribute("expense", new Expense());
+		return "expense-form";
+	}
+	@RequestMapping(method=RequestMethod.POST, value="/saveOrUpdateExpense")
+	public String saveOrUpdateExpense(@ModelAttribute("expense") Expense expense){
+		System.out.println("print the expense object"+expense);
+		return "redirect:/web/template1";
 	}
 
-	@RequestMapping("/addExpense")
-	public String addExpense(Expense expense) {
-		expenseService.addExpense(expense);
-		return"addExpense";
-	}
-
-	@RequestMapping(method=RequestMethod.PUT, value="/expenses/{id}")
-	public void updateExpense(@RequestBody Expense expense, @PathVariable Long id) {
-		expenseService.updateExpense(id, expense);
-	}
-
-	@RequestMapping(method=RequestMethod.DELETE, value="/expenses/{id}")
-	public void deleteExpense(@PathVariable Long id) {
-		expenseService.deleteExpense(id);
-	}
 }

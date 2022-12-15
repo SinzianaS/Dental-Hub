@@ -1,6 +1,7 @@
 package com.expensetracker.app.model;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -13,8 +14,8 @@ public class Expense {
     private Category category;
     @ManyToOne                  //many expenses can be made by one user
     private User user;
-    private double amount;
-    private LocalDate expenseDate;
+    private BigDecimal amount;
+    private String expenseDate;
     private String description;
 
     public Expense() {
@@ -24,8 +25,8 @@ public class Expense {
     public Expense(Long id,
                    Category category,
                    User user,
-                   double amount,
-                   LocalDate expenseDate,
+                   BigDecimal amount,
+                   String expenseDate,
                    String description) {
         this.id = id;
         this.category = category;
@@ -59,19 +60,19 @@ public class Expense {
         this.user = user;
     }
 
-    public double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
-    public LocalDate getExpenseDate() {
+    public String getExpenseDate() {
         return expenseDate;
     }
 
-    public void setExpenseDate(LocalDate expenseDate) {
+    public void setExpenseDate(String expenseDate) {
         this.expenseDate = expenseDate;
     }
 

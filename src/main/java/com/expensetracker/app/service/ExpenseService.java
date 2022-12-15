@@ -28,6 +28,20 @@ public class ExpenseService {
 	public void addExpense(Expense expense) {
         expenseRepository.save(expense);
 	}
+	/*
+	public Expense saveExpenseDetails(Expense expense){
+		// map object to entity
+
+
+		//save the entity to database
+
+
+		//map entity to object
+
+	}
+
+	 */
+
 
 	public void updateExpense(Long id, Expense expense) {
         expenseRepository.save(expense);

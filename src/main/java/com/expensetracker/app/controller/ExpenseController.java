@@ -10,8 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class ExpenseController {
-    @Autowired
-    private ExpenseRepository expenseRepository;
+
     @Autowired
     private ExpenseService expenseService;
 
