@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>category template</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<div>
+    <h2>Category List</h2>
+    <table class="table table-stripped">
+        <thead>
+            <th>Id</th>
+            <th>Name</th>
+            <th>User</th>
+        </thead>
+        <tbody>
+            <tr th:each="category : ${categories}">
+                <td th:text="${category.id}"></td>
+                <td th:text="${category.name}"></td>
+                <td th:text="${category.user}"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

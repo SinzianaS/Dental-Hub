@@ -20,7 +20,7 @@ public class CategoryWebController {
     	public String getAllCategories(Model model) {
     		List<Category> categories = categoryService.getAllCategories();
     		model.addAttribute("categories", categories);
-    		return "categoriesTemplate";
+    		return "categoryTemplate";
     	}
 
     	@RequestMapping("/{id}")

@@ -1,19 +1,12 @@
 package com.expensetracker.app.controller;
 
 import com.expensetracker.app.model.Category;
-import com.expensetracker.app.model.Expense;
 import com.expensetracker.app.repository.CategoryRepository;
 import com.expensetracker.app.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.Collection;
-import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/api")
@@ -45,7 +38,7 @@ public class CategoryController {
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value="/categories/{id}")
-        public void deleteCategory(@PathVariable Long id){
+        public void deleteCategory(@PathVariable Integer id){
         categoryService.deleteCategory(id);
     }
 }
