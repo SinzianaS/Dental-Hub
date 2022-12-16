@@ -2,7 +2,7 @@ package com.expensetracker.app.model;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+
 
 @Entity
 @Table(name="expense")
@@ -23,14 +23,14 @@ public class Expense {
     }
 
     public Expense(Long id,
-                   Category category,
-                   User user,
+                   Integer categoryId,
+                   Long userId,
                    BigDecimal amount,
                    String expenseDate,
                    String description) {
         this.id = id;
-        this.category = category;
-        this.user = user;
+        this.category= new Category(categoryId, "");
+        this.user = new User(id, "","");
         this.amount = amount;
         this.expenseDate = expenseDate;
         this.description = description;

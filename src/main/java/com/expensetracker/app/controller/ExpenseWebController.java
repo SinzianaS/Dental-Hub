@@ -28,7 +28,7 @@ public class ExpenseWebController {
 	}
 	@RequestMapping(method=RequestMethod.POST, value="/saveOrUpdateExpense")
 	public String saveOrUpdateExpense(@ModelAttribute("expense") Expense expense){
-		System.out.println("print the expense object"+expense);
+		//System.out.println("print the expense object"+expense);
 		return "redirect:/web/template1";
 	}
 
