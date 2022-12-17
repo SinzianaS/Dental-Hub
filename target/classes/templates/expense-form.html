@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <title>Create Expense</title>
     <link rel="stylesheet"
-              href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-
+             href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 <body>
     <h4>Create new expense</h4>
     <hr/>
     <div class="container-fluid p-5 ">
         <form th:action="@{/web/saveOrUpdateExpense}"th:object="${expense}" method="post">
-            <input type = "text" name="amount" placeholder ="Enter expense amount" th:field="*{amount}"/>
+            <input type = "text"  name="amount" placeholder ="Enter expense amount" th:field="*{amount}"/>
+            <br/><br/>
+            <input type = "text" name="category" placeholder ="Enter category name" th:field="*{category.name}"/>
             <br/><br/>
             <input type = "date" name="expenseDate" th:field="*{expenseDate}"/>
             <br/><br/>

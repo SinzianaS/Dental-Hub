@@ -1,8 +1,8 @@
-insert into users values (1, 'anai', 'anai@mail.com')
-insert into users values(2,'mariap', 'mariap@mail.com')
-insert into users values(3,'raduf', 'raduf@mail.com')
-insert into users values(4, 'serbanr', 'serbanr@mail.com')
-insert into users values(5, 'cristinag', 'cristinag@mail.com')
+insert into users values (1,'anai@mail.com','anai')
+insert into users values(2,'mariap@mail.com','mariap')
+insert into users values(3,'raduf@mail.com', 'raduf')
+insert into users values(4,'serbanr@mail.com', 'serbanr')
+insert into users values(5,'cristinag@mail.com', 'cristinag')
 
 insert into category values(1, 'Food', 1)
 insert into category values(2, 'Travel', 2)
