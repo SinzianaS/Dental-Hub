@@ -31,5 +31,4 @@ public class ExpenseWebController {
 		//System.out.println("print the expense object"+expense);
 		return "redirect:/web/template1";
 	}
-
 }

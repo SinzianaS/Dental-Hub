@@ -1,5 +1,6 @@
 package com.expensetracker.app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.NonNull;
 
 import javax.persistence.*;

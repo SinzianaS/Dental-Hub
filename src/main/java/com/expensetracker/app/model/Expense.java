@@ -30,7 +30,7 @@ public class Expense {
                    String description) {
         this.id = id;
         this.category= new Category(categoryId, "");
-        this.user = new User(id, "","");
+        this.user = new User(userId, "","");
         this.amount = amount;
         this.expenseDate = expenseDate;
         this.description = description;
