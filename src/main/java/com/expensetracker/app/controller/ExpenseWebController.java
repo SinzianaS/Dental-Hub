@@ -20,15 +20,24 @@ public class ExpenseWebController {
 		model.addAttribute("expenses", expenseService.getAllExpenses());
 		return "expenseTemplate";
 	}
-
+/*
 	@RequestMapping("/createExpense")
 	public String createExpense(Model model){
 		model.addAttribute("expense", new Expense());
 		return "expense-form";
 	}
+
+ */
+	@RequestMapping("/createExpense")
+	public String createExpense(Expense expense) {
+		expenseService.addExpense(expense);
+		return"expense-form";
+	}
+
 	@RequestMapping(method=RequestMethod.POST, value="/saveOrUpdateExpense")
 	public String saveOrUpdateExpense(@ModelAttribute("expense") Expense expense){
-		//System.out.println("print the expense object"+expense);
+		//System.out.println("print the expense object"+ expense);
 		return "redirect:/web/template1";
 	}
+
 }
