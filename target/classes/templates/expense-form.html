@@ -13,8 +13,6 @@
         <form th:action="@{/web/saveOrUpdateExpense}"th:object="${expense}" method="post">
             <input type = "text"  name="amount" placeholder ="Enter expense amount" th:field="*{amount}"/>
             <br/><br/>
-            <input type = "text" name="category" placeholder ="Enter category name" th:field="*{category.name}"/>
-            <br/><br/>
             <input type = "date" name="expenseDate" th:field="*{expenseDate}"/>
             <br/><br/>
             <textarea rows="5" name="description" placeholder="Enter description"th:field="*{description}"></textarea>
