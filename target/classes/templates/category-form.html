@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Category</title>
+    <link rel="stylesheet"
+             href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+    <h4>Create new category</h4>
+    <hr/>
+    <div class="container-fluid p-5 ">
+        <form th:action="@{/category/saveOrUpdateCategory}"th:object="${category}" method="post">
+            <input type = "text"  name="name" placeholder ="Enter category name" th:field="*{name}"/>
+            <br/><br/>
+            <button type="submit">Save</button>
+            <button type="submit" a th:href="@{/category/template2}">Back</button>
+        </form>
+    </div>
+</body>
+</html>

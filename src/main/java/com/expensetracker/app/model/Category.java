@@ -13,6 +13,7 @@ import javax.persistence.*;
 @Table(name="category")
 public class Category {
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int categoryId;
     @NonNull
     private String name;
