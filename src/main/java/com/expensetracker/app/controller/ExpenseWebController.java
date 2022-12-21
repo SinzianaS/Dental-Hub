@@ -67,14 +67,14 @@ public class ExpenseWebController {
 
 		expenseService.createExpense(formData.toParameters());
 
-		return "redirect:/template1";
+		return "redirect:/web/create";
 	}
 
 	@GetMapping
 	public String listExpenses(Model model) {
 		model.addAttribute("expenses", expenseService.getAllExpenses());
 
-		return "expense-form";
+		return "expenseTemplate";
 	}
 
 

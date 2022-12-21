@@ -30,7 +30,7 @@
         </div>
         <div>
             <label for="expenseDate">expenseDate</label>
-            <input id="expenseDate" type="text"
+            <input id="expenseDate" type="date"
                    th:field="*{expenseDate}">
             <p th:if="${#fields.hasErrors('expenseDate')}"
                th:text="${#strings.listJoin(#fields.errors('expenseDate'), ', ')}"></p>
@@ -44,7 +44,8 @@
         </div>
 
 
-        <button type="submit">Create user</button>
+        <button type="submit" a th:href="@{/web}">Create expense</button>
+        <button type="submit" a th:href="@{/web/create}">Back</button>
     </form>
 </main>
 
