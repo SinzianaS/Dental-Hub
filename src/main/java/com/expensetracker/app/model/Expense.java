@@ -40,6 +40,10 @@ public class Expense {
         this.description = description;
     }
 
+    public Expense(Category category, String amount, String expenseDate, String description) {
+
+    }
+
     @Override
     public String toString() {
         return "Expense{" +

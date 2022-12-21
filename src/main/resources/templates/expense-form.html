@@ -1,25 +1,52 @@
+
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Create Expense</title>
+    <title>Expenses</title>
     <link rel="stylesheet"
-             href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+                 href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 <body>
-    <h4>Create new expense</h4>
-    <hr/>
-    <div class="container-fluid p-5 ">
-        <form th:action="@{/web/saveOrUpdateExpense}"th:object="${expense}" method="post">
-            <input type = "text"  name="amount" placeholder ="Enter expense amount" th:field="*{amount}"/>
-            <br/><br/>
-            <input type = "date" name="expenseDate" th:field="*{expenseDate}"/>
-            <br/><br/>
-            <textarea rows="5" name="description" placeholder="Enter description"th:field="*{description}"></textarea>
-            <br/><br/>
-            <button type="submit">Save</button>
-            <button type="submit" a th:href="@{/web/template1}">Back</button>
-        </form>
-    </div>
+<main>
+    <h1>Create expense</h1>
+    <form class="container-fluid p-5 " th:object="${formData}"
+          th:action="@{/expense-form}"
+          method="post">
+        <div>
+            <label for="category">category</label>
+            <input id="category" type="text"
+                   th:field="*{category}">
+            <p th:if="${#fields.hasErrors('category')}"
+               th:text="${#strings.listJoin(#fields.errors('category'), ', ')}"></p>
+        </div>
+        <div>
+            <label for="amount">amount</label>
+            <input id="amount" type="text"
+                   th:field="*{amount}">
+            <p th:if="${#fields.hasErrors('amount')}"
+               th:text="${#strings.listJoin(#fields.errors('amount'), ', ')}"></p>
+        </div>
+        <div>
+            <label for="expenseDate">expenseDate</label>
+            <input id="expenseDate" type="text"
+                   th:field="*{expenseDate}">
+            <p th:if="${#fields.hasErrors('expenseDate')}"
+               th:text="${#strings.listJoin(#fields.errors('expenseDate'), ', ')}"></p>
+        </div>
+        <div>
+            <label for="description">description</label>
+            <input id="description" type="text"
+                   th:field="*{description}">
+            <p th:if="${#fields.hasErrors('description')}"
+               th:text="${#strings.listJoin(#fields.errors('description'), ', ')}"></p>
+        </div>
+
+
+        <button type="submit">Create user</button>
+    </form>
+</main>
+
 </body>
 </html>

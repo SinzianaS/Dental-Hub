@@ -1,6 +1,7 @@
 package com.expensetracker.app.service;
 
 import com.expensetracker.app.model.Expense;
+import com.expensetracker.app.parameters.ExpenseCreationParameters;
 import com.expensetracker.app.repository.ExpenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +11,9 @@ import java.util.List;
 
 @Service
 public class ExpenseService {
-
+	public ExpenseService(ExpenseRepository expenseRepository){
+		this.expenseRepository = expenseRepository;
+	}
 	@Autowired
 	private ExpenseRepository expenseRepository;
 
@@ -35,4 +38,10 @@ public class ExpenseService {
     public void deleteExpense(Long id) {
         expenseRepository.deleteById(id);
     }
+	public Expense createExpense(ExpenseCreationParameters parameters) {
+		Expense expense = new Expense(parameters.getCategory(), parameters.getAmount(),
+				parameters.getExpenseDate(), parameters.getDescription());
+		return expenseRepository.save(expense);
+	}
+
 }
