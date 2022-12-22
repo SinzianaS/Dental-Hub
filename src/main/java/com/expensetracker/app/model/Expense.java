@@ -40,7 +40,7 @@ public class Expense {
         this.description = description;
     }
 
-    public Expense(Category category, String amount, String expenseDate, String description) {
+    public Expense(Category category, BigDecimal amount, String expenseDate, String description) {
 
     }
 

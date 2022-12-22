@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 @Service
 public class CategoryService {
-@Autowired
+    @Autowired
     private CategoryRepository categoryRepository;
 
     public List<Category> getAllCategories() {

@@ -1,30 +1,40 @@
 package com.expensetracker.app.form;
 
 import com.expensetracker.app.model.Category;
+import com.expensetracker.app.model.User;
 import com.expensetracker.app.parameters.ExpenseCreationParameters;
 
+
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 
 public class CreateExpenseFormData {
-
+    private User user;
     private Category category;
 
     @NotNull
-    private String amount;
+    private BigDecimal amount;
     private String expenseDate;
     private String description;
 
     public ExpenseCreationParameters toParameters() {
         return new ExpenseCreationParameters(
-                category, amount, expenseDate, description);
+                user,category, amount, expenseDate, description);
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Category getCategory() {
         return category;
     }
 
-    public String getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
@@ -40,7 +50,7 @@ public class CreateExpenseFormData {
         this.category = category;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 

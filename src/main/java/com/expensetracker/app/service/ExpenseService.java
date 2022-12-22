@@ -5,8 +5,6 @@ import com.expensetracker.app.parameters.ExpenseCreationParameters;
 import com.expensetracker.app.repository.ExpenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

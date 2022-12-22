@@ -4,22 +4,27 @@ import com.expensetracker.app.model.Category;
 import com.expensetracker.app.model.User;
 import org.springframework.util.Assert;
 
+import java.math.BigDecimal;
+
 public class ExpenseCreationParameters {
+    private final User user;
     private final Category category;
 
-    private final String amount;
+    private final BigDecimal amount;
     private final String expenseDate;
     private final String description;
 
 
 
-    public ExpenseCreationParameters(Category category,
-                                     String amount,
+    public ExpenseCreationParameters(User user,
+                                     Category category,
+                                     BigDecimal amount,
                                      String expenseDate,
                                      String description) {
-        Assert.notNull(category, "category should not be null");
+
         Assert.notNull(amount, "amount should not be null");
-        this.category = category;
+        this.user = new User();
+        this.category = new Category();
         this.amount = amount;
         this.expenseDate = expenseDate;
         this.description = description;
@@ -27,11 +32,15 @@ public class ExpenseCreationParameters {
 
     }
 
+    public User getUser() {
+        return user;
+    }
+
     public Category getCategory() {
         return category;
     }
 
-    public String getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
