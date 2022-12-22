@@ -2,7 +2,6 @@ package com.expensetracker.app.controller;
 
 import com.expensetracker.app.form.CreateExpenseFormData;
 import com.expensetracker.app.service.ExpenseService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -45,10 +44,10 @@ public class ExpenseWebController {
 	}
 
  */
-    @Autowired
+
 	private ExpenseService expenseService;
 
-	public ExpenseWebController(ExpenseService expenseService) {
+	public void ExpenseController(ExpenseService expenseService) {
 		this.expenseService = expenseService;
 	}
 

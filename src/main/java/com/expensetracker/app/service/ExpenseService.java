@@ -11,24 +11,18 @@ import java.util.List;
 
 @Service
 public class ExpenseService {
-
-	@Autowired
-	private ExpenseRepository expenseRepository;
 	public ExpenseService(ExpenseRepository expenseRepository){
 		this.expenseRepository = expenseRepository;
 	}
-/*
+	@Autowired
+	private ExpenseRepository expenseRepository;
+
 	public List<Expense> getAllExpenses() {
 		List<Expense> expenses = new ArrayList<>();
         expenseRepository.findAll()
 						 .forEach(expenses::add);
 		return expenses;
 	}
-
- */
-	public List<Expense> getAllExpenses() {
-			return expenseRepository.findAll();
-		}
 
 	public Expense getExpense(Long id) {
 		return expenseRepository.findById(id).get();
