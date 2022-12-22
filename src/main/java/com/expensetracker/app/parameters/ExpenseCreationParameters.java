@@ -15,7 +15,6 @@ public class ExpenseCreationParameters {
     private final String description;
 
 
-
     public ExpenseCreationParameters(User user,
                                      Category category,
                                      BigDecimal amount,

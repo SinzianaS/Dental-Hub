@@ -4,7 +4,6 @@ import com.expensetracker.app.model.Category;
 import com.expensetracker.app.model.User;
 import com.expensetracker.app.parameters.ExpenseCreationParameters;
 
-
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
@@ -19,7 +18,7 @@ public class CreateExpenseFormData {
 
     public ExpenseCreationParameters toParameters() {
         return new ExpenseCreationParameters(
-                user,category, amount, expenseDate, description);
+                user, category, amount, expenseDate, description);
     }
 
     public User getUser() {

@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @Data
-@Table(name="users")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue
@@ -27,6 +27,6 @@ public class User {
 
     @Override
     public String toString() {
-        return userName ;
+        return userName;
     }
 }

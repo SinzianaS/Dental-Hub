@@ -11,10 +11,10 @@ import java.math.BigDecimal;
 @Entity
 @NoArgsConstructor
 @Data
-@Table(name="expense")
+@Table(name = "expense")
 public class Expense {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne                  //many of the expenses can go under one category
     private Category category;
@@ -33,8 +33,8 @@ public class Expense {
                    String expenseDate,
                    String description) {
         this.id = id;
-        this.category= new Category(categoryId, "");
-        this.user = new User(userId, "","");
+        this.category = new Category(categoryId, "", new User());
+        this.user = new User(userId, "", "");
         this.amount = amount;
         this.expenseDate = expenseDate;
         this.description = description;

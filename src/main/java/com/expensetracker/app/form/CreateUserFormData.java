@@ -1,6 +1,5 @@
 package com.expensetracker.app.form;
 
-import com.expensetracker.app.parameters.ExpenseCreationParameters;
 import com.expensetracker.app.parameters.UserCreationParameters;
 
 public class CreateUserFormData {
@@ -10,7 +9,7 @@ public class CreateUserFormData {
 
     public UserCreationParameters toParameters() {
         return new UserCreationParameters(
-                userId,userName, email);
+                userId, userName, email);
     }
 
     public long getUserId() {

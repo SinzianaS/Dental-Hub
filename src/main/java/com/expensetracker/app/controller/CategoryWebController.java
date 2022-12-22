@@ -1,63 +1,52 @@
 package com.expensetracker.app.controller;
 
-
-import com.expensetracker.app.model.Category;
-import com.expensetracker.app.model.Expense;
-import com.expensetracker.app.repository.ExpenseRepository;
+import com.expensetracker.app.form.CreateCategoryFormData;
 import com.expensetracker.app.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.List;
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/category")
 public class CategoryWebController {
+
     @Autowired
     private CategoryService categoryService;
-	@Autowired
-	private ExpenseRepository expenseRepository;
 
-	@GetMapping("/template2")
-	public String getAllCategories(Model model) {
-		List<Category> categories = categoryService.getAllCategories();
-		model.addAttribute("categories", categories);
-		return "categoryTemplate";
-	}
+    public CategoryWebController(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
 
-	@RequestMapping("/{id}")
-	public Category getCategory(@PathVariable Integer categoryId) {
-		return categoryService.getCategory(categoryId);
-	}
-	@RequestMapping("/createCategory")
-	public String createCategory(Category category) {
-		return"category-form";
-	}
-/*
-	@RequestMapping(method= RequestMethod.POST, value="/addCategory")
-	public String addCategory(Category category) {
-		categoryService.addCategory(category);
-		return"category-form";
-	}
+    @GetMapping("/create")
+    public String showCreateCategoryForm(Model model) {
+        model.addAttribute("formData", new CreateCategoryFormData());
+        return "category-form";
+    }
 
- */
-	@RequestMapping(method=RequestMethod.POST, value="/saveOrUpdateCategory")
-	public String saveOrUpdateCategory(@ModelAttribute("category") Category category){
-		System.out.println("print the category object "+ category);
-		categoryService.addCategory(category);
-		return "redirect:/category/template2";
-	}
+    @PostMapping("/create")
+    public String doCreateCategory(@Valid @ModelAttribute("formData") CreateCategoryFormData formData,
+                                   BindingResult bindingResult,
+                                   Model model) {
+        if (bindingResult.hasErrors()) {
+            return "category-form";
+        }
 
-	@RequestMapping(method= RequestMethod.PUT, value="/{id}")
-	public void updateCategory(@RequestBody Category category, @PathVariable Integer id) {
-		categoryService.updateCategory(id, category);
-	}
+        categoryService.createCategory(formData.toParameters());
 
-	@RequestMapping(method=RequestMethod.DELETE, value="/{id}")
-	public void deleteCategory(@PathVariable Integer id) {
-		categoryService.deleteCategory(id);
-	}
+        return "redirect:/category/create";
+    }
+
+    @GetMapping("/template2")
+    public String listExpenses(Model model) {
+        model.addAttribute("expenses", categoryService.getAllCategories());
+        return "categoryTemplate";
+    }
 
 }

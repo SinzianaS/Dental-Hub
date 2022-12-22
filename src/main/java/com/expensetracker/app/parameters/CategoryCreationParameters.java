@@ -1,7 +1,7 @@
 package com.expensetracker.app.parameters;
 
 import com.expensetracker.app.model.User;
-import lombok.NonNull;
+
 
 public class CategoryCreationParameters {
     private final int categoryId;
@@ -22,7 +22,7 @@ public class CategoryCreationParameters {
         return user;
     }
 
-    public CategoryCreationParameters(int categoryId,  String name, User user) {
+    public CategoryCreationParameters(int categoryId, String name, User user) {
         this.categoryId = categoryId;
         this.name = name;
         this.user = user;

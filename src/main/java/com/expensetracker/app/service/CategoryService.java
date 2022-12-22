@@ -1,6 +1,7 @@
 package com.expensetracker.app.service;
 
 import com.expensetracker.app.model.Category;
+import com.expensetracker.app.parameters.CategoryCreationParameters;
 import com.expensetracker.app.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,5 +34,10 @@ public class CategoryService {
     public void deleteCategory(Integer id) {
         categoryRepository.deleteById(id);
     }
+    public Category createCategory(CategoryCreationParameters parameters) {
+        Category category = new Category(parameters.getCategoryId(), parameters.getName(),
+    				parameters.getUser());
+    		return categoryRepository.save(category);
+    	}
 }
 

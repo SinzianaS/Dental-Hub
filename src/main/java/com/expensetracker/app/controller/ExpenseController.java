@@ -20,7 +20,8 @@ public class ExpenseController {
     @Autowired
     private ExpenseService expenseService;
 
-    @RequestMapping("/expenses")         //get all expenses
+    @RequestMapping("/expenses")
+        //get all expenses
     List<Expense> getExpenses() {
         //return expenseRepository.findAll();
         return expenseService.getAllExpenses();
@@ -28,7 +29,7 @@ public class ExpenseController {
 
 
     @RequestMapping("/expenses/{id}")
-    public Expense getExpenseById(@PathVariable Long id){
+    public Expense getExpenseById(@PathVariable Long id) {
         return expenseService.getExpense(id);
     }
 
@@ -38,14 +39,16 @@ public class ExpenseController {
         expenseService.updateExpense(id, expense);
     }
 
-    @PostMapping("/expenses")    //create new expense
+    @PostMapping("/expenses")
+        //create new expense
     ResponseEntity<Expense> createExpense(@Valid @RequestBody Expense expense) throws URISyntaxException {
-        Expense result= expenseRepository.save(expense);
+        Expense result = expenseRepository.save(expense);
         return ResponseEntity.created(new URI("/api/expenses" + result.getId())).body(result);
     }
+
     @DeleteMapping("/expenses/{id}")
     ResponseEntity<?> deleteExpense(@PathVariable Long id) {
-       expenseRepository.deleteById(id);
-          return ResponseEntity.ok().build();
+        expenseRepository.deleteById(id);
+        return ResponseEntity.ok().build();
     }
 }

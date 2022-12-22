@@ -13,69 +13,38 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/web")
 public class ExpenseWebController {
-	/*
+
     @Autowired
     private ExpenseService expenseService;
 
-	@GetMapping("/template1")
-	public String getAllExpenses(Model model) {
-		model.addAttribute("expenses", expenseService.getAllExpenses());
-		return "expenseTemplate";
-	}
+    public ExpenseWebController(ExpenseService expenseService) {
+        this.expenseService = expenseService;
+    }
 
-/* ///////
-	@RequestMapping("/createExpense")
-	public String createExpense(Model model){
-		model.addAttribute("expense", new Expense());
-		return "expense-form";
-	}
-*///////////
+    @GetMapping("/create")
+    public String showCreateExpenseForm(Model model) {
+        model.addAttribute("formData", new CreateExpenseFormData());
+        return "expense-form";
+    }
 
-/*
-	@RequestMapping("/createExpense")
-	public String createExpense(Expense expense) {
-		return"expense-form";
-	}
+    @PostMapping("/create")
+    public String doCreateExpense(@Valid @ModelAttribute("formData") CreateExpenseFormData formData,
+                                  BindingResult bindingResult,
+                                  Model model) {
+        if (bindingResult.hasErrors()) {
+            return "expense-form";
+        }
 
-	@RequestMapping(method=RequestMethod.POST, value="/saveOrUpdateExpense")
-	public String saveOrUpdateExpense(@ModelAttribute("expense") Expense expense){
-		System.out.println("print the expense object"+ expense);
-		expenseService.addExpense(expense);
-		return "redirect:/web/template1";
-	}
+        expenseService.createExpense(formData.toParameters());
 
- */
-    @Autowired
-	private ExpenseService expenseService;
+        return "redirect:/web/create";
+    }
 
-	public ExpenseWebController(ExpenseService expenseService) {
-		this.expenseService = expenseService;
-	}
-
-	@GetMapping("/create")
-	public String showCreateExpenseForm(Model model) {
-		model.addAttribute("formData", new CreateExpenseFormData());
-		return "expense-form";
-	}
-
-	@PostMapping("/create")
-	public String doCreateExpense(@Valid @ModelAttribute("formData") CreateExpenseFormData formData,
-							   BindingResult bindingResult,
-							   Model model) {
-		if (bindingResult.hasErrors()) {
-			return "expense-form";
-		}
-
-		expenseService.createExpense(formData.toParameters());
-
-		return "redirect:/web/create";
-	}
-
-	@GetMapping("/template1")
-	public String listExpenses(Model model) {
-		model.addAttribute("expenses", expenseService.getAllExpenses());
-		return "expenseTemplate";
-	}
+    @GetMapping("/template1")
+    public String listExpenses(Model model) {
+        model.addAttribute("expenses", expenseService.getAllExpenses());
+        return "expenseTemplate";
+    }
 
 
 }

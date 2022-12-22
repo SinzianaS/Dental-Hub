@@ -3,7 +3,6 @@ package com.expensetracker.app.form;
 
 import com.expensetracker.app.model.User;
 import com.expensetracker.app.parameters.CategoryCreationParameters;
-import com.expensetracker.app.parameters.ExpenseCreationParameters;
 import lombok.NonNull;
 
 
@@ -15,8 +14,8 @@ public class CreateCategoryFormData {
     private User user;
 
     public CategoryCreationParameters toParameters() {
-       return new CategoryCreationParameters(
-               categoryId, name, user);
+        return new CategoryCreationParameters(
+                categoryId, name, user);
     }
 
     public int getCategoryId() {
