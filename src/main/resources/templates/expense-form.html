@@ -10,42 +10,38 @@
 </head>
 <body>
 <main>
-    <h1>Create expense</h1>
+    <h4>Create expense</h4>
     <form class="container-fluid p-5 " th:object="${formData}"
-          th:action="@{/expense-form}"
+          th:action="@{/web/create}"
           method="post">
         <div>
-            <label for="category">category</label>
-            <input id="category" type="text"
+            <input id="category" type="text" placeholder="Enter category"
                    th:field="*{category}">
             <p th:if="${#fields.hasErrors('category')}"
                th:text="${#strings.listJoin(#fields.errors('category'), ', ')}"></p>
+
         </div>
+        <br/>
         <div>
-            <label for="amount">amount</label>
-            <input id="amount" type="text"
+            <input id="amount" type="text" placeholder="Enter amount"
                    th:field="*{amount}">
             <p th:if="${#fields.hasErrors('amount')}"
                th:text="${#strings.listJoin(#fields.errors('amount'), ', ')}"></p>
         </div>
         <div>
-            <label for="expenseDate">expenseDate</label>
             <input id="expenseDate" type="date"
                    th:field="*{expenseDate}">
             <p th:if="${#fields.hasErrors('expenseDate')}"
                th:text="${#strings.listJoin(#fields.errors('expenseDate'), ', ')}"></p>
         </div>
         <div>
-            <label for="description">description</label>
-            <input id="description" type="text"
-                   th:field="*{description}">
+            <textarea rows="3"placeholder="Enter description"
+                   th:field="*{description}"></textarea>
             <p th:if="${#fields.hasErrors('description')}"
                th:text="${#strings.listJoin(#fields.errors('description'), ', ')}"></p>
         </div>
-
-
-        <button type="submit" a th:href="@{/web}">Create expense</button>
-        <button type="submit" a th:href="@{/web/create}">Back</button>
+        <button type="submit" a th:href="@{/web/create}">Create expense</button>
+        <button type="submit" a th:href="@{/web/template1}">Back</button>
     </form>
 </main>
 

@@ -71,10 +71,9 @@ public class ExpenseWebController {
 		return "redirect:/web/create";
 	}
 
-	@GetMapping
+	@GetMapping("/template1")
 	public String listExpenses(Model model) {
 		model.addAttribute("expenses", expenseService.getAllExpenses());
-
 		return "expenseTemplate";
 	}
 

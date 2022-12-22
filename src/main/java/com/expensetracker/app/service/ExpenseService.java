@@ -28,7 +28,7 @@ public class ExpenseService {
  */
 	public List<Expense> getAllExpenses() {
 			return expenseRepository.findAll();
-		}
+	}
 
 	public Expense getExpense(Long id) {
 		return expenseRepository.findById(id).get();
