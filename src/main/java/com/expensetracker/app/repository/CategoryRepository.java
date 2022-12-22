@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 //mapping category bean to database table
 @Repository
-public interface CategoryRepository extends CrudRepository<Category, Integer> {
+public interface CategoryRepository extends JpaRepository<Category, Integer> {
     Category findByName(String name);                //search the table
 }
