@@ -31,10 +31,11 @@ public class ExpenseWebController {
                                   BindingResult bindingResult,
                                   Model model) {
         if (bindingResult.hasErrors()) {
-            return "expenses/create";
+            return "expense-form";
         }
 
         expenseService.createExpense(expenseData.toParameters());
+        System.out.println("expense object:" +expenseData);
 
         return "redirect:/expenses";
     }

@@ -23,7 +23,7 @@ public class CreateExpenseFormData {
 
     public ExpenseCreationParameters toParameters() {
         return new ExpenseCreationParameters(
-                user, category, amount, expenseDate, description);
+               user, category, amount, expenseDate, description);
     }
 
     public User getUser() {
@@ -64,6 +64,17 @@ public class CreateExpenseFormData {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "CreateExpenseFormData{" +
+                "user=" + user +
+                ", category=" + category +
+                ", amount=" + amount +
+                ", expenseDate='" + expenseDate + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }
 
