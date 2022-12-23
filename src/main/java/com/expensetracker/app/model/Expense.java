@@ -1,8 +1,5 @@
 package com.expensetracker.app.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -11,7 +8,7 @@ import java.math.BigDecimal;
 @Table(name = "expense")
 public class Expense {
     @Id
-    @GeneratedValue //(strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToOne                  //many of the expenses can go under one category
     private Category category;

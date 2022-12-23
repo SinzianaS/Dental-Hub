@@ -7,18 +7,30 @@
              href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 <body>
+<main>
     <h4>Create new user</h4>
-    <hr/>
-    <div class="container-fluid p-5 ">
-        <form th:action="@{/users/create}"th:object="${user}" method="post">
-            <input type = "text"  name="userName" placeholder ="Enter user's name" th:field="*{userName}"/>
-            <br/><br/>
-          <input type = "text"  name="email" placeholder ="Enter user's email" th:field="*{email}"/>
-          <br/><br/>
+    <form class="container-fluid p-5 " th:object="${userData}"
+             th:action="@{/users/create}"
+             method="post">
+           <div>
+               <input id="userName" type="text" placeholder="Enter username"
+                      th:field="*{userName}">
+               <p th:if="${#fields.hasErrors('userName')}"
+                  th:text="${#strings.listJoin(#fields.errors('userName'), ', ')}"></p>
 
-            <button type="submit"a th:href="@{/users}">Save</button>
-            <button type="submit" a th:href="@{/users/create}">Back</button>
-        </form>
+           </div>
+        <br/>
+           <div>
+               <input id="email" type="text" placeholder="Enter email"
+                      th:field="*{email}">
+               <p th:if="${#fields.hasErrors('email')}"
+                  th:text="${#strings.listJoin(#fields.errors('email'), ', ')}"></p>
+           </div>
+        <br/>
+           <button type="submit" a th:href="@{/users/create}">Create user</button>
+           <button type="submit" a th:href="@{/users}">Back</button>
+       </form>
     </div>
+</main>
 </body>
 </html>

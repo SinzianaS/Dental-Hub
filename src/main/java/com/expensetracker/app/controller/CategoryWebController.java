@@ -40,7 +40,7 @@ public class CategoryWebController {
 
         categoryService.createCategory(categoryData.toParameters());
 
-        return "redirect:/categories/create";
+        return "redirect:/categories";
     }
 
     @GetMapping

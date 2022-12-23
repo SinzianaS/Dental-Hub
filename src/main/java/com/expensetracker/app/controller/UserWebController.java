@@ -36,7 +36,7 @@ public class UserWebController {
 
            userService.createUser(userData.toParameters());
 
-           return "redirect:/users/create";
+           return "redirect:/users";
        }
 
        @GetMapping
