@@ -4,18 +4,17 @@ import com.expensetracker.app.model.User;
 import com.expensetracker.app.parameters.UserCreationParameters;
 import com.expensetracker.app.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 
 import java.util.List;
-
+@Service
 public class UserService {
+    //@Autowired
+     private final UserRepository userRepository;
     public UserService(UserRepository userRepository) {
             this.userRepository = userRepository;
-        }
-    @Autowired
-    private UserRepository userRepository;
-
-
+    }
 
     public List<User> getAllUsers() {
         return userRepository.findAll();
@@ -38,7 +37,7 @@ public class UserService {
     }
 
     public User createUser(UserCreationParameters parameters) {
-        User user = new User(parameters.getUserId(), parameters.getUserName(),
+        User user = new User( parameters.getUserName(),
                 parameters.getEmail());
         return userRepository.save(user);
     }

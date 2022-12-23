@@ -10,7 +10,7 @@
 <div>
     <h2>Category List</h2>
     <div>
-            <a th:href="@{/category/createCategory}">Create category</a>
+            <a th:href="@{/categories/create}">Create category</a>
         </div>
     <table class="table table-stripped">
         <thead>
@@ -21,7 +21,7 @@
         <tbody>
             <tr th:each="category : ${categories}">
                 <td th:text="${category.categoryId}"></td>
-                <td th:text="${category.name}"></td>
+                <td th:text="${category.categoryName}"></td>
                 <td th:text="${category.user}"></td>
             </tr>
         </tbody>

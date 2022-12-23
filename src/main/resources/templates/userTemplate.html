@@ -8,21 +8,21 @@
 </head>
 <body>
 <div>
-    <h2>Category List</h2>
+    <h2>User List</h2>
     <div>
-            <a th:href="@{/categories/create}">Create category</a>
+            <a th:href="@{/users/create}">Create user</a>
         </div>
     <table class="table table-stripped">
         <thead>
-            <th>Id</th>
-            <th>Name</th>
-            <th>User</th>
+            <th>userId</th>
+            <th>userName</th>
+            <th>email</th>
         </thead>
         <tbody>
-            <tr th:each="category : ${categories}">
-                <td th:text="${category.categoryId}"></td>
-                <td th:text="${category.categoryName}"></td>
-                <td th:text="${category.user}"></td>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.userId}"></td>
+                <td th:text="${user.userName}"></td>
+                <td th:text="${user.email}"></td>
             </tr>
         </tbody>
     </table>

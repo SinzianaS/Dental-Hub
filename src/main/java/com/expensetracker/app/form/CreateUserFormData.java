@@ -3,21 +3,11 @@ package com.expensetracker.app.form;
 import com.expensetracker.app.parameters.UserCreationParameters;
 
 public class CreateUserFormData {
-    private long userId;
     private String userName;
     private String email;
 
     public UserCreationParameters toParameters() {
-        return new UserCreationParameters(
-                userId, userName, email);
-    }
-
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
+        return new UserCreationParameters(userName, email);
     }
 
     public String getUserName() {

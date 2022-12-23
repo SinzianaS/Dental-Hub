@@ -4,27 +4,18 @@ import com.expensetracker.app.model.User;
 
 
 public class CategoryCreationParameters {
-    private final int categoryId;
-
-    private final String name;
-
+    private final String categoryName;
     private final User user;
-
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public String getName() {
-        return name;
+    public CategoryCreationParameters(String categoryName, User user) {
+           this.categoryName = categoryName;
+           this.user = user;
+       }
+    public String getCategoryName() {
+        return categoryName;
     }
 
     public User getUser() {
         return user;
     }
 
-    public CategoryCreationParameters(int categoryId, String name, User user) {
-        this.categoryId = categoryId;
-        this.name = name;
-        this.user = user;
-    }
 }

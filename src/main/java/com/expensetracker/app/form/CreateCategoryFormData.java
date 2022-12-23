@@ -5,37 +5,31 @@ import com.expensetracker.app.model.User;
 import com.expensetracker.app.parameters.CategoryCreationParameters;
 import lombok.NonNull;
 
+import javax.validation.constraints.Size;
+
 
 public class CreateCategoryFormData {
-    private int categoryId;
     @NonNull
-    private String name;
+    @Size(min =1, max=400)
+    private String categoryName;
 
     private User user;
 
     public CategoryCreationParameters toParameters() {
         return new CategoryCreationParameters(
-                categoryId, name, user);
+                categoryName, user);
     }
 
-    public int getCategoryId() {
-        return categoryId;
-    }
-
-    public String getName() {
-        return name;
+    public String getCategoryName() {
+        return categoryName;
     }
 
     public User getUser() {
         return user;
     }
 
-    public void setCategoryId(int categoryId) {
-        this.categoryId = categoryId;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public void setUser(User user) {

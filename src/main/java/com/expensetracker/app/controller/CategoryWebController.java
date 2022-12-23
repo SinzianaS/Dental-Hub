@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/category")
+@RequestMapping("/categories")
 public class CategoryWebController {
 
-    @Autowired
-    private CategoryService categoryService;
+    //@Autowired
+    private final CategoryService categoryService;
 
     public CategoryWebController(CategoryService categoryService) {
         this.categoryService = categoryService;
@@ -26,26 +26,26 @@ public class CategoryWebController {
 
     @GetMapping("/create")
     public String showCreateCategoryForm(Model model) {
-        model.addAttribute("formData", new CreateCategoryFormData());
+        model.addAttribute("categoryData", new CreateCategoryFormData());
         return "category-form";
     }
 
     @PostMapping("/create")
-    public String doCreateCategory(@Valid @ModelAttribute("formData") CreateCategoryFormData formData,
+    public String doCreateCategory(@Valid @ModelAttribute("categoryData") CreateCategoryFormData categoryData,
                                    BindingResult bindingResult,
                                    Model model) {
         if (bindingResult.hasErrors()) {
             return "category-form";
         }
 
-        categoryService.createCategory(formData.toParameters());
+        categoryService.createCategory(categoryData.toParameters());
 
-        return "redirect:/category/create";
+        return "redirect:/categories/create";
     }
 
-    @GetMapping("/template2")
+    @GetMapping
     public String listExpenses(Model model) {
-        model.addAttribute("expenses", categoryService.getAllCategories());
+        model.addAttribute("categories", categoryService.getAllCategories());
         return "categoryTemplate";
     }
 

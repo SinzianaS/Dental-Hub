@@ -25,11 +25,11 @@ public class ExpenseCreationParameters {
         Assert.notNull(amount, "amount should not be null");
         Assert.notNull(expenseDate, "expenseDate should not be null");
         Assert.notNull(description, "description should not be null");
-        
+
  */
 
-        this.user = new User();
-        this.category = new Category();
+        this.user = user;
+        this.category = category;
         this.amount = amount;
         this.expenseDate = expenseDate;
         this.description = description;

@@ -11,18 +11,18 @@
 <body>
 <main>
     <h4>Create expense</h4>
-    <form class="container-fluid p-5 " th:object="${formData}"
+    <form class="container-fluid p-5 " th:object="${expenseData}"
           th:action="@{/expenses/create}"
           method="post">
         <div>
-            <input id="category" type="text" placeholder="Enter category"
+            <input id="category" type="text" placeholder="Enter category id"
                    th:field="*{category}">
             <p th:if="${#fields.hasErrors('category')}"
                th:text="${#strings.listJoin(#fields.errors('category'), ', ')}"></p>
 
         </div>
         <div>
-            <input id="user" type="text" placeholder="Enter user"
+            <input id="user" type="text" placeholder="Enter user id"
                    th:field="*{user}">
             <p th:if="${#fields.hasErrors('user')}"
                th:text="${#strings.listJoin(#fields.errors('user'), ', ')}"></p>

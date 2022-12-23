@@ -22,19 +22,19 @@ public class ExpenseWebController {
 
     @GetMapping("/create")
     public String showCreateExpenseForm(Model model) {
-        model.addAttribute("formData", new CreateExpenseFormData());
+        model.addAttribute("expenseData", new CreateExpenseFormData());
         return "expense-form";
     }
 
     @PostMapping("/create")
-    public String doCreateExpense(@Valid @ModelAttribute("formData") CreateExpenseFormData formData,
+    public String doCreateExpense(@Valid @ModelAttribute("expenseData") CreateExpenseFormData expenseData,
                                   BindingResult bindingResult,
                                   Model model) {
         if (bindingResult.hasErrors()) {
-            return "expense-form";
+            return "expenses/create";
         }
 
-        expenseService.createExpense(formData.toParameters());
+        expenseService.createExpense(expenseData.toParameters());
 
         return "redirect:/expenses";
     }

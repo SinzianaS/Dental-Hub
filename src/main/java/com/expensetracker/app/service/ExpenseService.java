@@ -10,7 +10,7 @@ import java.util.List;
 
 @Service
 public class ExpenseService {
-    @Autowired
+    //@Autowired
     private final ExpenseRepository expenseRepository;
     public ExpenseService(ExpenseRepository expenseRepository) {
             this.expenseRepository = expenseRepository;
@@ -37,7 +37,7 @@ public class ExpenseService {
     }
 
     public Expense createExpense(ExpenseCreationParameters parameters) {
-        Expense expense = new Expense(parameters.getCategory(), parameters.getAmount(),
+        Expense expense = new Expense(parameters.getCategory(),parameters.getUser(), parameters.getAmount(),
                 parameters.getExpenseDate(), parameters.getDescription());
         return expenseRepository.save(expense);
     }

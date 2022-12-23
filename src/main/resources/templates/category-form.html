@@ -7,15 +7,30 @@
              href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 <body>
-    <h4>Create new category</h4>
-    <hr/>
-    <div class="container-fluid p-5 ">
-        <form th:action="@{/category/saveOrUpdateCategory}"th:object="${category}" method="post">
-            <input type = "text"  name="name" placeholder ="Enter category name" th:field="*{name}"/>
-            <br/><br/>
-            <button type="submit">Save</button>
-            <button type="submit" a th:href="@{/category/template2}">Back</button>
-        </form>
-    </div>
+<main>
+    <h4>Create expense</h4>
+    <form class="container-fluid p-5 " th:object="${categoryData}"
+          th:action="@{/categories/create}"
+          method="post">
+        <div>
+            <input id="categoryName" type="text" placeholder="Enter category name"
+                   th:field="*{categoryName}">
+            <p th:if="${#fields.hasErrors('categoryName')}"
+               th:text="${#strings.listJoin(#fields.errors('categoryName'), ', ')}"></p>
+
+        </div>
+        <br/>
+        <div>
+            <input id="user" type="text" placeholder="Enter user"
+                   th:field="*{user}">
+            <p th:if="${#fields.hasErrors('user')}"
+               th:text="${#strings.listJoin(#fields.errors('user'), ', ')}"></p>
+        </div>
+        <br/>
+
+        <button type="submit" a th:href="@{/categories/create}">Create category</button>
+        <button type="submit" a th:href="@{/categories}">Back</button>
+    </form>
+</main>
 </body>
 </html>

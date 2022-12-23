@@ -7,23 +7,46 @@ import lombok.NonNull;
 import javax.persistence.*;
 
 @Entity
-@NoArgsConstructor
-@Data
 @Table(name = "category")
 public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue //(strategy = GenerationType.IDENTITY)
     private int categoryId;
     @NonNull
     private String categoryName;
     @ManyToOne(cascade = CascadeType.PERSIST)         //many categories can be connected to one user
     private User user;                              //when we save the user, the category gets saved also
 
+    protected Category(){
+    }
+    public Category(String categoryName, User user) {
 
-    public Category(int categoryId, String categoryName, User user) {
-        this.categoryId = categoryId;
         this.categoryName = categoryName;
-        this.user = new User();
+        this.user =user;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

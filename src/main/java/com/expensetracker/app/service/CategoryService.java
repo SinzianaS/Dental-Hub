@@ -1,6 +1,7 @@
 package com.expensetracker.app.service;
 
 import com.expensetracker.app.model.Category;
+import com.expensetracker.app.model.Expense;
 import com.expensetracker.app.parameters.CategoryCreationParameters;
 import com.expensetracker.app.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,14 +11,15 @@ import java.util.ArrayList;
 import java.util.List;
 @Service
 public class CategoryService {
-    @Autowired
-    private CategoryRepository categoryRepository;
+    //@Autowired
+    private final CategoryRepository categoryRepository;
+
+   public CategoryService(CategoryRepository categoryRepository){
+       this.categoryRepository = categoryRepository;
+   }
 
     public List<Category> getAllCategories() {
-        List<Category> categories = new ArrayList<>();
-        categoryRepository.findAll()
-                          .forEach(categories::add);
-        return categories;
+        return categoryRepository.findAll();
     }
 
     public Category getCategory(Integer id) {
@@ -35,7 +37,7 @@ public class CategoryService {
         categoryRepository.deleteById(id);
     }
     public Category createCategory(CategoryCreationParameters parameters) {
-        Category category = new Category(parameters.getCategoryId(), parameters.getName(),
+        Category category = new Category( parameters.getCategoryName(),
     				parameters.getUser());
     		return categoryRepository.save(category);
     	}
