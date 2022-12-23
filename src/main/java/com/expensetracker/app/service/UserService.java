@@ -9,12 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 public class UserService {
+    public UserService(UserRepository userRepository) {
+            this.userRepository = userRepository;
+        }
     @Autowired
     private UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+
 
     public List<User> getAllUsers() {
         return userRepository.findAll();

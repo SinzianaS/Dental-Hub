@@ -15,19 +15,19 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int categoryId;
     @NonNull
-    private String name;
+    private String categoryName;
     @ManyToOne(cascade = CascadeType.PERSIST)         //many categories can be connected to one user
     private User user;                              //when we save the user, the category gets saved also
 
 
-    public Category(int categoryId, String name, User user) {
+    public Category(int categoryId, String categoryName, User user) {
         this.categoryId = categoryId;
-        this.name = name;
+        this.categoryName = categoryName;
         this.user = new User();
     }
 
     @Override
     public String toString() {
-        return name;
+        return categoryName;
     }
 }

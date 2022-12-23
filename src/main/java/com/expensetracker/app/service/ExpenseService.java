@@ -10,23 +10,12 @@ import java.util.List;
 
 @Service
 public class ExpenseService {
-
     @Autowired
-    private ExpenseRepository expenseRepository;
-
+    private final ExpenseRepository expenseRepository;
     public ExpenseService(ExpenseRepository expenseRepository) {
-        this.expenseRepository = expenseRepository;
+            this.expenseRepository = expenseRepository;
     }
 
-    /*
-        public List<Expense> getAllExpenses() {
-            List<Expense> expenses = new ArrayList<>();
-            expenseRepository.findAll()
-                             .forEach(expenses::add);
-            return expenses;
-        }
-
-     */
     public List<Expense> getAllExpenses() {
         return expenseRepository.findAll();
     }
@@ -52,5 +41,6 @@ public class ExpenseService {
                 parameters.getExpenseDate(), parameters.getDescription());
         return expenseRepository.save(expense);
     }
+
 
 }

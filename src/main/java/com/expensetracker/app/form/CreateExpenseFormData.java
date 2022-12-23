@@ -4,16 +4,21 @@ import com.expensetracker.app.model.Category;
 import com.expensetracker.app.model.User;
 import com.expensetracker.app.parameters.ExpenseCreationParameters;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 
 public class CreateExpenseFormData {
+
     private User user;
     private Category category;
-
-    @NotNull
+    @DecimalMin("1")
+    @DecimalMax(("100000"))
     private BigDecimal amount;
+    @NotEmpty
+    @Size(min =1, max =400)
     private String expenseDate;
+    @NotEmpty
+    @Size(min =1, max =400)
     private String description;
 
     public ExpenseCreationParameters toParameters() {

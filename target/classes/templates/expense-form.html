@@ -12,13 +12,20 @@
 <main>
     <h4>Create expense</h4>
     <form class="container-fluid p-5 " th:object="${formData}"
-          th:action="@{/web/create}"
+          th:action="@{/expenses/create}"
           method="post">
         <div>
             <input id="category" type="text" placeholder="Enter category"
                    th:field="*{category}">
             <p th:if="${#fields.hasErrors('category')}"
                th:text="${#strings.listJoin(#fields.errors('category'), ', ')}"></p>
+
+        </div>
+        <div>
+            <input id="user" type="text" placeholder="Enter user"
+                   th:field="*{user}">
+            <p th:if="${#fields.hasErrors('user')}"
+               th:text="${#strings.listJoin(#fields.errors('user'), ', ')}"></p>
 
         </div>
         <div>
@@ -39,8 +46,8 @@
             <p th:if="${#fields.hasErrors('description')}"
                th:text="${#strings.listJoin(#fields.errors('description'), ', ')}"></p>
         </div>
-        <button type="submit" a th:href="@{/web/create}">Create expense</button>
-        <button type="submit" a th:href="@{/web/template1}">Back</button>
+        <button type="submit" a th:href="@{/expenses/create}">Create expense</button>
+        <button type="submit" a th:href="@{/expenses}">Back</button>
     </form>
 </main>
 

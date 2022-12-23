@@ -11,11 +11,10 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/web")
+@RequestMapping("/expenses")
 public class ExpenseWebController {
 
-    @Autowired
-    private ExpenseService expenseService;
+    private final ExpenseService expenseService;
 
     public ExpenseWebController(ExpenseService expenseService) {
         this.expenseService = expenseService;
@@ -37,10 +36,10 @@ public class ExpenseWebController {
 
         expenseService.createExpense(formData.toParameters());
 
-        return "redirect:/web/create";
+        return "redirect:/expenses";
     }
 
-    @GetMapping("/template1")
+    @GetMapping
     public String listExpenses(Model model) {
         model.addAttribute("expenses", expenseService.getAllExpenses());
         return "expenseTemplate";
