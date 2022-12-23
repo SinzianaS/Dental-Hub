@@ -18,7 +18,7 @@ You need to have Java 11 installed in order to run Expense-Tracker.
 
 ## Usage
 1. Go to `http://localhost:8080`
-2. Sign up for an account 
+2. Start tracking your expenses by navigating to the `/expenses`and  `/categories`endpoints.
 3. Start tracking your expenses!
 
 ## Contributing
